@@ -15,7 +15,7 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: password
       MYSQL_DATABASE: receptenboek
-      MYSQL_USER: user
+      MYSQL_USER: root
       MYSQL_PASSWORD: password
       MYSQL_ROOT_HOST: '%'
     ports:
