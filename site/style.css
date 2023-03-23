@@ -1,0 +1,11 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap%27');
+@import url('https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Alkatra&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Francois+One&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Prompt&display=swap');
+
+
+body {
+    font-family: 'Prompt';
+    background-color: wheat;
+}
