@@ -1,20 +1,19 @@
 <?php
 require 'database.php';
+include 'nav.php';
 
-$stmt = $conn->prepare("SELECT * FROM Gebruikers");
+/* $stmt = $conn->prepare("SELECT * FROM Gebruikers");
 $stmt->execute();
 
 $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
 $myGuests = $stmt->fetchAll();
 
-if (isset($_POST['voornaam'])) {
-    $voornaam = $_POST['voornaam'];
-    $achternaam = $_POST['achternaam'];
+if (isset($_POST['wachtwoord'])) {
     $email = $_POST['email'];
     $wachtwoord = $_POST['wachtwoord'];
 
     // prepare sql and bind parameters
-    $stmt = $conn->prepare("INSERT INTO Gebruikers (voornaam, achternaam, email, wachtwoord)
+     $stmt = $conn->prepare("INSERT INTO Gebruikers (voornaam, achternaam, email, wachtwoord)
   VALUES (:voornaam, :achternaam, :email, :wachtwoord)");
     $stmt->bindParam(':voornaam', $voornaam);
     $stmt->bindParam(':achternaam', $achternaam);
@@ -23,10 +22,38 @@ if (isset($_POST['voornaam'])) {
 
     // insert a row
     $stmt->execute();
+} */
+
+if (isset($_POST['email']) && !empty($_POST['email'])) {
+    $email = $_POST['email'];
+
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        echo "Fout email formaat.";
+        //exit;
+    }
+
+    $stmt = $conn->prepare("SELECT email, wachtwoord FROM Gebruikers WHERE email = :email");
+    $stmt->bindParam(':email', $email);
+    $stmt->execute();
+
+    //$result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
+    $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    if (is_array($user) && count($user) > 0) {
+
+        if (isset($_POST['wachtwoord']) && !empty($_POST['wachtwoord'])) {
+            $wachtwoord = $_POST['wachtwoord'];
+
+            if ($user['wachtwoord'] == $wachtwoord) {
+                echo "Laden...";
+                //code om de pagina te laden
+
+            } else {
+                echo "Uw wachtwoord is verkeerd.";
+            }
+        }
+    }
 }
-
-
-
 
 ?>
 <!DOCTYPE html>
@@ -42,11 +69,11 @@ if (isset($_POST['voornaam'])) {
 
 <body>
     <h1>Inloggen</h1>
-    <form id="FormRegister" method="post">
+    <form id="formLogin" method="post">
         <label for="email">Email</label></br>
         <input type="email" name="email" id="email"></br>
         <label for="wachtwoord">Wachtwoord</label></br>
-        <input type="password" name="wachtwoord" id="wachtwoord"></br>
+        <input type="password" name="wachtwoord" id="wachtwoord"></br></br>
         <input type="submit" value="Inloggen">
     </form>
 

@@ -1,5 +1,6 @@
 <?php
 require 'database.php';
+include 'nav.php';
 
 $stmt = $conn->prepare("SELECT * FROM Gebruikers");
 $stmt->execute();

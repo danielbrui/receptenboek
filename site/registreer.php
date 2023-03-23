@@ -1,5 +1,7 @@
 <?php
 require 'database.php';
+include 'nav.php';
+
 
 $stmt = $conn->prepare("SELECT * FROM Gebruikers");
 $stmt->execute();
@@ -26,8 +28,6 @@ if (isset($_POST['voornaam'])) {
 }
 
 
-
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -41,6 +41,7 @@ if (isset($_POST['voornaam'])) {
 </head>
 
 <body>
+<div class="vak">
     <h1>Registreren</h1>
     <form id="FormRegister" method="post">
         <label for="voornaam">Voornaam</label></br>
@@ -50,8 +51,9 @@ if (isset($_POST['voornaam'])) {
         <label for="email">Email</label></br>
         <input type="email" name="email" id="email"></br>
         <label for="wachtwoord">Wachtwoord</label></br>
-        <input type="password" name="wachtwoord" id="wachtwoord"></br>
+        <input type="password" name="wachtwoord" id="wachtwoord"></br></br>
         <input type="submit" value="Registreer">
+</div>
     </form>
 
 </body>
