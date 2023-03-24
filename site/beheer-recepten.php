@@ -6,11 +6,10 @@ include 'nav.php';
 $stmt = $conn->prepare("SELECT * FROM Recepten");
 $stmt->execute();
 
-$result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
-$myGuests = $stmt->fetchAll();
+//$titel = $stmt->fetchAll();
 
 if (isset($_POST['titel'])) {
-    $voornaam = $_POST['titel'];
+    $titel = $_POST['titel'];
 
     $stmt = $conn->prepare("INSERT INTO Recepten (titel)
   VALUES (:titel)");

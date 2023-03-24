@@ -5,33 +5,8 @@ include 'nav.php';
 $stmt = $conn->prepare("SELECT * FROM Recepten");
 $stmt->execute();
 
-//$result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
-//$myGuests = $stmt->fetchAll();
 
 $recepten = $stmt->fetchAll();
-
-/*if (isset($_POST['voornaam'])) {
-    $voornaam = $_POST['voornaam'];
-    $achternaam = $_POST['achternaam'];
-    $email = $_POST['email'];
-    $wachtwoord = $_POST['wachtwoord'];
-
-    // prepare sql and bind parameters
-    $stmt = $conn->prepare("INSERT INTO Gebruikers (voornaam, achternaam, email, wachtwoord)
-  VALUES (:voornaam, :achternaam, :email, :wachtwoord)");
-    $stmt->bindParam(':voornaam', $voornaam);
-    $stmt->bindParam(':achternaam', $achternaam);
-    $stmt->bindParam(':email', $email);
-    $stmt->bindParam(':wachtwoord', $wachtwoord);
-
-    // insert a row
-    $stmt->execute();
-}*/
-
-
-
-
-
 
 ?>
 <!DOCTYPE html>
@@ -48,12 +23,12 @@ $recepten = $stmt->fetchAll();
 <body>
     <h1>Recepten</h1>
     <div class="divclass2">
-    <?php foreach ($recepten as $recept) : ?>
-        <div>
-            <?php echo $recept['titel'] ?></br>
-            <img src="images/<?php echo $recept['afbeelding'] ?>" style="width: 100%"></img></a></br>
-        </div>
-    <?php endforeach ?>
+        <?php foreach ($recepten as $recept) : ?>
+            <div>
+                <?php echo $recept['titel'] ?></br>
+                <img src="images/<?php echo $recept['afbeelding'] ?>" style="width: 100%"></img></a></br>
+            </div>
+        <?php endforeach ?>
     </div>
 </body>
 

@@ -22,7 +22,8 @@ $ingredienten = $stmt->fetchAll();
 <body>
     <h1>ingredienten</h1>
     <div class="divclass2">
-        <table class="table">
+
+        <table class="tabel">
             <thead>
                 <tr>
                     <th scope="col">Naam ingredient</th>
