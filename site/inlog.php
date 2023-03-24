@@ -2,28 +2,6 @@
 require 'database.php';
 include 'nav.php';
 
-/* $stmt = $conn->prepare("SELECT * FROM Gebruikers");
-$stmt->execute();
-
-$result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
-$myGuests = $stmt->fetchAll();
-
-if (isset($_POST['wachtwoord'])) {
-    $email = $_POST['email'];
-    $wachtwoord = $_POST['wachtwoord'];
-
-    // prepare sql and bind parameters
-     $stmt = $conn->prepare("INSERT INTO Gebruikers (voornaam, achternaam, email, wachtwoord)
-  VALUES (:voornaam, :achternaam, :email, :wachtwoord)");
-    $stmt->bindParam(':voornaam', $voornaam);
-    $stmt->bindParam(':achternaam', $achternaam);
-    $stmt->bindParam(':email', $email);
-    $stmt->bindParam(':wachtwoord', $wachtwoord);
-
-    // insert a row
-    $stmt->execute();
-} */
-
 if (isset($_POST['email']) && !empty($_POST['email'])) {
     $email = $_POST['email'];
 

@@ -2,13 +2,15 @@
 require 'database.php';
 include 'nav.php';
 
-$stmt = $conn->prepare("SELECT * FROM Gebruikers");
+$stmt = $conn->prepare("SELECT * FROM Recepten");
 $stmt->execute();
 
-$result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
-$myGuests = $stmt->fetchAll();
+//$result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
+//$myGuests = $stmt->fetchAll();
 
-if (isset($_POST['voornaam'])) {
+$recepten = $stmt->fetchAll();
+
+/*if (isset($_POST['voornaam'])) {
     $voornaam = $_POST['voornaam'];
     $achternaam = $_POST['achternaam'];
     $email = $_POST['email'];
@@ -24,7 +26,14 @@ if (isset($_POST['voornaam'])) {
 
     // insert a row
     $stmt->execute();
-}
+}*/
+
+foreach ($recepten as $recept) : ?>
+    <div class="vak">
+        <?php echo $recept['titel'] ?>
+        <img src="images/<?php echo $kolom['afbeelding'] ?>" style="width: 10%"></img></a></br>
+    </div>
+<?php endforeach
 
 
 
@@ -42,18 +51,6 @@ if (isset($_POST['voornaam'])) {
 </head>
 
 <body>
-    <h1>Registreren</h1>
-    <form id="FormRegister" method="post">
-        <label for="voornaam">Voornaam</label></br>
-        <input type="text" name="voornaam" id="voornaam"></br>
-        <label for="achternaam">Achternaam</label></br>
-        <input type="text" name="achternaam" id="achternaam"></br>
-        <label for="email">Email</label></br>
-        <input type="email" name="email" id="email"></br>
-        <label for="wachtwoord">Wachtwoord</label></br>
-        <input type="password" name="wachtwoord" id="wachtwoord"></br>
-        <input type="submit" value="Registreer">
-    </form>
 
 </body>
 
