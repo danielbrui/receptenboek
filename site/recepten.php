@@ -46,13 +46,15 @@ $recepten = $stmt->fetchAll();
 </head>
 
 <body>
-    <h1>test</h1>
+    <h1>Recepten</h1>
+    <div class="divclass2">
     <?php foreach ($recepten as $recept) : ?>
-        <div class="divclass2">
+        <div>
             <?php echo $recept['titel'] ?></br>
-            <img src="images/<?php echo $recept['afbeelding'] ?>" style="width: 10%"></img></a></br>
+            <img src="images/<?php echo $recept['afbeelding'] ?>" style="width: 100%"></img></a></br>
         </div>
     <?php endforeach ?>
+    </div>
 </body>
 
 </html>
