@@ -60,3 +60,4 @@ if (isset($_POST['email']) && !empty($_POST['email'])) {
 </body>
 
 </html>
+<?php include 'footer.php'; ?>

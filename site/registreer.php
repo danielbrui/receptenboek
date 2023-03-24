@@ -39,23 +39,25 @@ if (isset($_POST['voornaam'])) {
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
 </head>
+<?php // visuele deel van de pagina word hieronder gemaakt 
+?>
 
 <body>
-<div class="divclass1">
-    <h1>Registreren</h1>
-    <form id="FormRegister" method="post">
-        <label for="voornaam">Voornaam</label></br>
-        <input type="text" name="voornaam" id="voornaam"></br>
-        <label for="achternaam">Achternaam</label></br>
-        <input type="text" name="achternaam" id="achternaam"></br>
-        <label for="email">Email</label></br>
-        <input type="email" name="email" id="email"></br>
-        <label for="wachtwoord">Wachtwoord</label></br>
-        <input type="password" name="wachtwoord" id="wachtwoord"></br></br>
-        <input type="submit" value="Registreer">
-</div>
+    <div class="divclass1">
+        <h1>Registreren</h1>
+        <form id="FormRegister" method="post">
+            <label for="voornaam">Voornaam</label></br>
+            <input type="text" name="voornaam" id="voornaam"></br>
+            <label for="achternaam">Achternaam</label></br>
+            <input type="text" name="achternaam" id="achternaam"></br>
+            <label for="email">Email</label></br>
+            <input type="email" name="email" id="email"></br>
+            <label for="wachtwoord">Wachtwoord</label></br>
+            <input type="password" name="wachtwoord" id="wachtwoord"></br></br>
+            <input type="submit" value="Registreer">
+    </div>
     </form>
-
 </body>
 
 </html>
+<?php include 'footer.php'; ?>

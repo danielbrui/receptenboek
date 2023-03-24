@@ -59,3 +59,11 @@ a:hover {
 .input {
     background-color: blue;
 }
+
+.CenterText {
+    background-color: whitesmoke;
+}
+
+.CenterText>p {
+    text-align: center;
+}

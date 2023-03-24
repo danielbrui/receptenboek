@@ -45,3 +45,4 @@ if (isset($_POST['titel'])) {
 </body>
 
 </html>
+<?php include 'footer.php'; ?>

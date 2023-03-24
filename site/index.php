@@ -23,3 +23,4 @@ $myGuests = $stmt->fetchAll();
 </body>
 
 </html>
+<?php include 'footer.php'; ?>
