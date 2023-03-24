@@ -28,12 +28,7 @@ $recepten = $stmt->fetchAll();
     $stmt->execute();
 }*/
 
-foreach ($recepten as $recept) : ?>
-    <div class="vak">
-        <?php echo $recept['titel'] ?>
-        <img src="images/<?php echo $kolom['afbeelding'] ?>" style="width: 10%"></img></a></br>
-    </div>
-<?php endforeach
+
 
 
 
@@ -51,7 +46,13 @@ foreach ($recepten as $recept) : ?>
 </head>
 
 <body>
-
+    <h1>test</h1>
+    <?php foreach ($recepten as $recept) : ?>
+        <div class="divclass2">
+            <?php echo $recept['titel'] ?></br>
+            <img src="images/<?php echo $recept['afbeelding'] ?>" style="width: 10%"></img></a></br>
+        </div>
+    <?php endforeach ?>
 </body>
 
 </html>

@@ -46,6 +46,7 @@ if (isset($_POST['email']) && !empty($_POST['email'])) {
 </head>
 
 <body>
+<div class="divclass1">
     <h1>Inloggen</h1>
     <form id="formLogin" method="post">
         <label for="email">Email</label></br>
@@ -54,6 +55,7 @@ if (isset($_POST['email']) && !empty($_POST['email'])) {
         <input type="password" name="wachtwoord" id="wachtwoord"></br></br>
         <input type="submit" value="Inloggen">
     </form>
+</div>
 
 </body>
 

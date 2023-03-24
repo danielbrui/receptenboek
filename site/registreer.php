@@ -41,7 +41,7 @@ if (isset($_POST['voornaam'])) {
 </head>
 
 <body>
-<div class="vak">
+<div class="divclass1">
     <h1>Registreren</h1>
     <form id="FormRegister" method="post">
         <label for="voornaam">Voornaam</label></br>
