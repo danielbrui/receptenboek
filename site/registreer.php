@@ -15,7 +15,6 @@ if (isset($_POST['voornaam'])) {
     $email = $_POST['email'];
     $wachtwoord = $_POST['wachtwoord'];
 
-    // prepare sql and bind parameters
     $stmt = $conn->prepare("INSERT INTO Gebruikers (voornaam, achternaam, email, wachtwoord)
   VALUES (:voornaam, :achternaam, :email, :wachtwoord)");
     $stmt->bindParam(':voornaam', $voornaam);
@@ -23,7 +22,6 @@ if (isset($_POST['voornaam'])) {
     $stmt->bindParam(':email', $email);
     $stmt->bindParam(':wachtwoord', $wachtwoord);
 
-    // insert a row
     $stmt->execute();
 }
 

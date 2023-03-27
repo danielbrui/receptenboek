@@ -6,7 +6,7 @@ include 'nav.php';
 $stmt = $conn->prepare("SELECT * FROM Recepten");
 $stmt->execute();
 
-//$titel = $stmt->fetchAll();
+//voeg rollen toe aan database.
 
 if (isset($_POST['titel'])) {
     $titel = $_POST['titel'];
@@ -35,6 +35,7 @@ if (isset($_POST['titel'])) {
     <div class="divclass1">
         <h1>Recepten Opslaan</h1>
         <form id="formReceptOpslaan" method="post">
+
             <label for="titel">Titel</label></br>
             <input type="text" name="titel" id="titel"></br></br>
             <input type="submit" value="Opslaan">

@@ -20,7 +20,7 @@ $ingredienten = $stmt->fetchAll();
 </head>
 
 <body>
-    <h1>ingredienten</h1>
+    <h1>Ingredienten</h1>
     <div class="divclass2">
 
         <table class="tabel">
