@@ -1,6 +1,8 @@
 <?php
 require 'database.php';
+session_start();
 include 'nav.php';
+
 
 if (isset($_POST['email']) && !empty($_POST['email'])) {
     $email = $_POST['email'];
@@ -25,9 +27,14 @@ if (isset($_POST['email']) && !empty($_POST['email'])) {
             if ($user['wachtwoord'] == $wachtwoord) {
                 echo "Laden...";
                 //code om de pagina te laden
+                $_SESSION = $user;
+
+                
+
 
             } else {
                 echo "Uw wachtwoord is verkeerd.";
+                exit;
             }
         }
     }
@@ -41,7 +48,7 @@ if (isset($_POST['email']) && !empty($_POST['email'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Receptenboek | Inloggen</title>
     <link rel="stylesheet" href="style.css">
 </head>
 

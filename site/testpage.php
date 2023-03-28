@@ -26,7 +26,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
             header("location: user_page.php"); // Redirect to user page
         }
     } else { // Invalid credentials
-        echo "Invalid email or wachtwoord";
+        echo "Verkeerde email of wachtwoord";
     }
 }
 ?>

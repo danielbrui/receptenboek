@@ -9,5 +9,10 @@
     <div><a href="beheer-recepten.php">beheer recepten</a></div>
     <div><a href="specials.php">specials</a></div>
     <div><a href="index.php">index</a></div>
-    <div><?php include 'header.php'; ?></div>
+    <?php include 'header.php'; ?>
+</div>
+
+
+<div class="headerCounter">
+    <?php include 'header.php'; ?>
 </div>

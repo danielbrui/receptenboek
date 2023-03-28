@@ -1,8 +1,7 @@
 <?php
-require 'database.php';
+$stmt = $conn->prepare('SELECT COUNT(id) as count FROM Recepten');
 
-$stmt = $conn->prepare("SELECT COUNT(id)
-FROM Recepten");
 $stmt->execute();
-$conn = $stmt->fetchAll();
-echo $conn;
+$result = $stmt->fetch();
+echo '<h2>Totaal aantal recepten: ' . $result['count'] . '</h2>';
+?>
