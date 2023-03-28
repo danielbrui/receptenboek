@@ -6,7 +6,11 @@ include 'nav.php';
 $stmt = $conn->prepare("SELECT * FROM Recepten");
 $stmt->execute();
 
+$recepten = $stmt->fetchAll();
+
+
 //voeg rollen toe aan database.
+
 
 if (isset($_POST['titel'])) {
     $titel = $_POST['titel'];
@@ -17,6 +21,8 @@ if (isset($_POST['titel'])) {
 
     $stmt->execute();
 }
+
+
 
 
 ?>
@@ -33,6 +39,26 @@ if (isset($_POST['titel'])) {
 
 <body>
     <div class="divclass1">
+        <h1>Lijst Recepten</h1>
+        <table class="tabel">
+            <thead>
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Naam</th>
+                    <th scope="col">afbeelding</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($recepten as $recept) : ?>
+                    <tr>
+                        <td><?php echo $recept["id"] ?></td>
+                        <td><?php echo $recept["titel"] ?></td>
+                        <td><?php echo $recept["afbeelding"] ?></td>
+                    </tr>
+                <?php endforeach ?>
+            </tbody>
+        </table>
+        </br>
         <h1>Recepten Opslaan</h1>
         <form id="formReceptOpslaan" method="post">
 

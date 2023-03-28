@@ -8,7 +8,8 @@
 body {
     font-family: 'Prompt';
     background-color: lightgray;
-    /*background-image: url("images/1.jpg");*/
+    /*background-image: url("images/06.jpg");*/
+    /*background-image: url("images/dot.jpg");*/
 }
 
 .navbar {
@@ -25,18 +26,19 @@ body {
     border-radius: 10px;
 }
 
-/*.navbar a:hover {
-    background-color: blue;
-    color: white;
-}*/
-
-a:hover {
-    color: yellow;
+a:link {
+    text-decoration: none;
+    color: black;
 }
 
-/*a:link {
-    color: orange;
-  }*/
+a:visited {
+    text-decoration: none;
+}
+
+a:hover {
+    color: lightcyan;
+    text-decoration: underline;
+}
 
 .divclass1 {
     background-color: whitesmoke;
@@ -80,4 +82,5 @@ th,
 td {
     border: 1px solid black;
     background-color: white;
+    border-collapse: collapse;
 }

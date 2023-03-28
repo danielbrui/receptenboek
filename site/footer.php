@@ -2,5 +2,5 @@
 
 <?php /* Daniël Bruijn 2023 */ ?>
 <div class="CenterText">
-    <p>Test</p>
+    <p>footer</p>
 </div>
