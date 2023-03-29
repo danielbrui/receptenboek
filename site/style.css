@@ -41,6 +41,12 @@ a:hover {
     text-decoration: underline;
 }
 
+.divclass0 {
+    background-color: whitesmoke;
+    border-radius: 10px;
+    padding: -5px;
+}
+
 .divclass1 {
     background-color: whitesmoke;
     border-radius: 10px;
@@ -90,12 +96,42 @@ td {
     text-align: right;
     padding: -5px;
     font-size: medium;
-    color: red;
+    color: darkcyan;
+}
+
+.headerText {
+    text-align: left;
+    padding: -5px;
+    font-size: medium;
+    color: darkcyan;
+}
+
+.headerText span {
+    text-align: right;
+    padding: -5px;
+    font-size: medium;
+    display:block;float:right
+}
+
+
+
+.Header1 {
+    font-size: medium;
+    color: darkcyan;
+    background-color: whitesmoke;
+    border-radius: 10px;
 }
 
 .h2 {
     text-align: right;
-    padding: -5px;
     font-size: 1px;
     color: aquamarine;
+}
+
+.h3 {
+    font-size: medium;
+}
+
+.DivHeader {
+    align-items: flex-end
 }

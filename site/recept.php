@@ -2,8 +2,10 @@
 require 'database.php';
 include 'header.php';
 include 'nav.php';
+$id = $_GET['id'];
 
-$stmt = $conn->prepare("SELECT * FROM Recepten ORDER BY duur ASC");
+$stmt = $conn->prepare("SELECT * FROM Recepten WHERE id = :id");
+$stmt->bindParam(':id', $id);
 $stmt->execute();
 
 

@@ -1,5 +1,6 @@
 <?php
 require 'database.php';
+include 'header.php';
 include 'nav.php';
 
 
@@ -78,22 +79,35 @@ if (isset($_POST['titel'])) {
             </tbody>
         </table>
         </br>
-        <h1>Recepten Opslaan</h1>
-        <form id="formReceptOpslaan" method="post">
 
-            <label for="titel">Titel</label></br>
-            <input type="text" name="titel" id="titel"></br>
-            <label for="titel">Afbeelding</label></br>
-            <input type="text" name="afbeelding" id="afbeelding"></br>
-            <label for="titel">Duur</label></br>
-            <input type="text" name="duur" id="duur"></br>
-            <label for="titel">Menugang</label></br>
-            <input type="text" name="menugang" id="menugang"></br>
-            <label for="titel">Moeilijkheidsgraad</label></br>
-            <input type="text" name="moeilijkheidsgraad" id="moeilijkheidsgraad"></br>
-            <label for="titel">Aantal Ingredienten</label></br>
-            <input type="text" name="aantal_ingredienten" id="aantal_ingredienten"></br></br>
-            <input type="submit" value="Opslaan">
+
+        <h1>Recepten Opslaan</h1>
+
+        <label for="titel">Selecteer een recept.</label></br>
+        <select name="AlleRecepten" id="AlleRecepten">
+            <?php foreach ($recepten as $recept) : ?>
+                <option value="<?= $recept['id'] ?>"><?= $recept['titel'] ?></option>
+            <?php endforeach ?>
+        </select>
+            <input type="submit" value="Select">
+
+            <input type="submit" value="Verwijder recept"></br></br>
+
+            <form id="formReceptOpslaan" method="post">
+                <h3 class="h3">Bewerk gegevens</h3></br>
+                <label for="titel">Titel</label></br>
+                <input type="text" name="titel" id="titel"></br>
+                <label for="titel">Afbeelding</label></br>
+                <input type="text" name="afbeelding" id="afbeelding"></br>
+                <label for="titel">Duur</label></br>
+                <input type="text" name="duur" id="duur"></br>
+                <label for="titel">Menugang</label></br>
+                <input type="text" name="menugang" id="menugang"></br>
+                <label for="titel">Moeilijkheidsgraad</label></br>
+                <input type="text" name="moeilijkheidsgraad" id="moeilijkheidsgraad"></br>
+                <label for="titel">Aantal Ingredienten</label></br>
+                <input type="text" name="aantal_ingredienten" id="aantal_ingredienten"></br></br>
+                <input type="submit" value="Opslaan">
     </div>
     </form>
 

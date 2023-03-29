@@ -7,7 +7,7 @@ $stmt = $conn->prepare("SELECT * FROM Ingredient");
 $stmt->execute();
 
 $ingredienten = $stmt->fetchAll();
-
+/*?id=1*/
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -23,7 +23,6 @@ $ingredienten = $stmt->fetchAll();
 <body>
     <h1>Ingredienten</h1>
     <div class="divclass2">
-
         <table class="tabel">
             <thead>
                 <tr>
@@ -31,11 +30,9 @@ $ingredienten = $stmt->fetchAll();
                 </tr>
             </thead>
             <tbody>
-                <?php foreach ($ingredienten as $ingredient) : ?>
                     <tr>
                         <td><?php echo $ingredient["naam"] ?></td>
                     </tr>
-                <?php endforeach ?>
             </tbody>
         </table>
     </div>

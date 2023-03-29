@@ -1,7 +1,9 @@
 <?php
 require 'database.php';
 session_start();
+include 'header.php';
 include 'nav.php';
+
 
 
 if (isset($_POST['email']) && !empty($_POST['email'])) {
@@ -12,7 +14,7 @@ if (isset($_POST['email']) && !empty($_POST['email'])) {
         //exit;
     }
 
-    $stmt = $conn->prepare("SELECT email, wachtwoord FROM Gebruikers WHERE email = :email");
+    $stmt = $conn->prepare("SELECT email, wachtwoord, rol FROM Gebruikers WHERE email = :email");
     $stmt->bindParam(':email', $email);
     $stmt->execute();
 
@@ -25,19 +27,25 @@ if (isset($_POST['email']) && !empty($_POST['email'])) {
             $wachtwoord = $_POST['wachtwoord'];
 
             if ($user['wachtwoord'] == $wachtwoord) {
-                echo "Laden...";
+                echo "Je bent ingelogd als ";
                 //code om de pagina te laden
                 $_SESSION = $user;
-
-                
-
-
+                if ($user['rol'] == 'admin') {
+                    echo "administrator.";
+                } else {
+                    echo "klant.";
+                }
             } else {
                 echo "Uw wachtwoord is verkeerd.";
                 exit;
             }
         }
     }
+    /*     if($_SESSION = $user) {
+        if ($user['rol'] == 'admin') {
+            echo "administrator.";
+
+    } */
 }
 
 ?>
@@ -53,16 +61,16 @@ if (isset($_POST['email']) && !empty($_POST['email'])) {
 </head>
 
 <body>
-<div class="divclass1">
-    <h1>Inloggen</h1>
-    <form id="formLogin" method="post">
-        <label for="email">Email</label></br>
-        <input type="email" name="email" id="email"></br>
-        <label for="wachtwoord">Wachtwoord</label></br>
-        <input type="password" name="wachtwoord" id="wachtwoord"></br></br>
-        <input type="submit" value="Inloggen">
-    </form>
-</div>
+    <div class="divclass1">
+        <h1>Inloggen</h1>
+        <form id="formLogin" method="post">
+            <label for="email">Email</label></br>
+            <input type="email" name="email" id="email"></br>
+            <label for="wachtwoord">Wachtwoord</label></br>
+            <input type="password" name="wachtwoord" id="wachtwoord"></br></br>
+            <input type="submit" value="Inloggen">
+        </form>
+    </div>
 
 </body>
 
