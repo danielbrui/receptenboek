@@ -6,12 +6,7 @@ include 'nav.php';
 
 $stmt = $conn->prepare("SELECT * FROM Recepten");
 $stmt->execute();
-
 $recepten = $stmt->fetchAll();
-
-
-//voeg rollen toe aan database.
-
 
 if (isset($_POST['titel'])) {
     $titel = $_POST['titel'];
@@ -89,27 +84,33 @@ if (isset($_POST['titel'])) {
                 <option value="<?= $recept['id'] ?>"><?= $recept['titel'] ?></option>
             <?php endforeach ?>
         </select>
-            <input type="submit" value="Select">
 
-            <input type="submit" value="Verwijder recept"></br></br>
+        <?php $sql = "DELETE FROM Recepten WHERE id = $id"; ?>
 
-            <form id="formReceptOpslaan" method="post">
-                <h3 class="h3">Bewerk gegevens</h3></br>
-                <label for="titel">Titel</label></br>
-                <input type="text" name="titel" id="titel"></br>
-                <label for="titel">Afbeelding</label></br>
-                <input type="text" name="afbeelding" id="afbeelding"></br>
-                <label for="titel">Duur</label></br>
-                <input type="text" name="duur" id="duur"></br>
-                <label for="titel">Menugang</label></br>
-                <input type="text" name="menugang" id="menugang"></br>
-                <label for="titel">Moeilijkheidsgraad</label></br>
-                <input type="text" name="moeilijkheidsgraad" id="moeilijkheidsgraad"></br>
-                <label for="titel">Aantal Ingredienten</label></br>
-                <input type="text" name="aantal_ingredienten" id="aantal_ingredienten"></br></br>
-                <input type="submit" value="Opslaan">
+
+
+        <input type="submit" value="Select">
+
+        <input type="submit" value="Verwijder"></br></br>
+
+        <form id="formReceptOpslaan" method="post">
+            <h3 class="h3">Bewerk gegevens</h3></br>
+            <label for="titel">Titel</label></br>
+            <input type="text" name="titel" id="titel"></br>
+            <label for="titel">Afbeelding</label></br>
+            <input type="text" name="afbeelding" id="afbeelding"></br>
+            <label for="titel">Duur</label></br>
+            <input type="text" name="duur" id="duur"></br>
+            <label for="titel">Menugang</label></br>
+            <input type="text" name="menugang" id="menugang"></br>
+            <label for="titel">Moeilijkheidsgraad</label></br>
+            <input type="text" name="moeilijkheidsgraad" id="moeilijkheidsgraad"></br>
+            <label for="titel">Aantal Ingredienten</label></br>
+            <input type="text" name="aantal_ingredienten" id="aantal_ingredienten"></br></br>
+            <input type="submit" value="Opslaan">
     </div>
     </form>
+
 
 </body>
 

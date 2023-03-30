@@ -4,11 +4,11 @@ include 'header.php';
 include 'nav.php';
 $id = $_GET['id'];
 
-$stmt = $conn->prepare("SELECT * FROM Recepten WHERE id = :id");
+$sql = "SELECT * FROM Recepten WHERE id = :id";
+$stmt = $conn->prepare($sql);
 $stmt->bindParam(':id', $id);
 $stmt->execute();
-
-
+$result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
 $recepten = $stmt->fetchAll();
 
 ?>
@@ -25,11 +25,15 @@ $recepten = $stmt->fetchAll();
 
 <body>
     <h1>Recepten</h1>
-    <div class="divclass2">
+    <div class="divclass3">
         <?php foreach ($recepten as $recept) : ?>
             <div>
                 <?php echo $recept['titel'] ?></br>
                 <img src="images/<?php echo $recept['afbeelding'] ?>" style="width: 100%"></img></a></br>
+                Duur koken recept: <?php echo $recept['duur'] ?></br>
+                Menugang: <?php echo $recept['menugang'] ?></br>
+                Moeilijkheidsgraad gerecht: <?php echo $recept['moeilijkheidsgraad'] ?></br>
+                Aantal ingredienten: <?php echo $recept['aantal_ingredienten'] ?></br>
             </div>
         <?php endforeach ?>
     </div>
