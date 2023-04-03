@@ -7,6 +7,7 @@ if ($_SESSION['rol'] != "admin") {
 require 'database.php';
 include 'header.php';
 include 'nav.php';
+error_reporting(0);
 
 $id = $_GET['id'];
 $stmt->bindParam(':id', $id);
@@ -36,12 +37,12 @@ if (isset($_POST['titel'])) {
     $stmt->execute();
 }
 
-if (isset($_POST['Toon'])) {
+/*if (isset($_POST['Toon'])) {
     $id = $_POST['AlleRecepten'];
     $stmt = $conn->prepare("SELECT  FROM Recepten ORDER BY id ASC WHERE id = :id");
     $stmt->bindParam(':id', $id);
     $stmt->execute();
-}
+}*/
 
 if (isset($_POST['UpdateButton'])) {
     $id = $_POST['AlleRecepten'];
@@ -100,9 +101,65 @@ if (isset($_POST['UpdateButton'])) {
                 <?php endforeach ?>
             </tbody>
         </table></br>
-        <input type="submit" value="Toon">
+        <form id="formReceptOpslaan" method="post">
+            <label for="titel">Sorteer bij:</label></br>
+            <input type="submit" value="welk gerecht het langst duurt om te maken" name="Toon">
+            <input type="submit" value="welk gerecht de meeste ingrediënten heeft" name="Toon2">
+        </form>
+<?php
+$sql = "SELECT * FROM Recepten ORDER BY duur DESC LIMIT 1";
+$result = $conn->query($sql);
+
+if (isset($_POST['Toon'])) {
+if ($result->rowCount() > 0) {  
+    echo "<table>";
+    echo "<tr><th>id</th><th>titel</th><th>afbeelding</th></th><th>duur</th><th>menugang</th><th>Moeilijkheidsgraad</th><th>aantal ingredienten</th>"; 
+    foreach($result as $row) {
+        echo "<tr>";
+        echo "<td>".$row['id']."</td>";
+        echo "<td>".$row['titel']."</td>";
+        echo "<td>".$row['afbeelding']."</td>";
+        echo "<td>".$row['duur']."</td>";
+        echo "<td>".$row['menugang']."</td>";
+        echo "<td>".$row['moeilijkheidsgraad']."</td>";
+        echo "<td>".$row['aantal_ingredienten']."</td>";
+        echo "</tr>";
+    }
+    echo "</table>";
+} else {
+    echo "No records found";
+}
+}
+?>
+
+<?php
+$sql = "SELECT * FROM Recepten ORDER BY aantal_ingredienten DESC LIMIT 1";
+$result = $conn->query($sql);
+
+if (isset($_POST['Toon2'])) {
+if ($result->rowCount() > 0) {  
+    echo "<table>";
+    echo "<tr><th>id</th><th>titel</th><th>afbeelding</th></th><th>duur</th><th>menugang</th><th>Moeilijkheidsgraad</th><th>aantal ingredienten</th>"; 
+    foreach($result as $row) {
+        echo "<tr>";
+        echo "<td>".$row['id']."</td>";
+        echo "<td>".$row['titel']."</td>";
+        echo "<td>".$row['afbeelding']."</td>";
+        echo "<td>".$row['duur']."</td>";
+        echo "<td>".$row['menugang']."</td>";
+        echo "<td>".$row['moeilijkheidsgraad']."</td>";
+        echo "<td>".$row['aantal_ingredienten']."</td>";
+        echo "</tr>";
+    }
+    echo "</table>";
+} else {
+    echo "No records found";
+}
+}
+?>
     </div>
 </body>
 
 </html>
 <?php include 'footer.php'; ?>
+
