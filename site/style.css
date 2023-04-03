@@ -9,7 +9,7 @@ body {
     font-family: 'Prompt';
     background-color: lightgray;
     /*background-image: url("images/06.jpg");*/
-    /*background-image: url("images/dot.jpg");*/
+    background-image: url("motif.webp");
 }
 
 .navbar {
@@ -107,14 +107,14 @@ td {
     text-align: right;
     padding: -5px;
     font-size: medium;
-    color: darkcyan;
+    color: darkblue;
 }
 
 .headerText {
     text-align: left;
     padding: -5px;
     font-size: medium;
-    color: darkcyan;
+    color: darkblue;
 }
 
 .headerText span {
@@ -128,7 +128,7 @@ td {
 
 .Header1 {
     font-size: medium;
-    color: darkcyan;
+    color: darkblue;
     background-color: whitesmoke;
     border-radius: 10px;
 }

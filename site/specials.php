@@ -104,6 +104,7 @@ if (isset($_POST['UpdateButton'])) {
         <form id="formReceptOpslaan" method="post">
             <label for="titel">Sorteer bij:</label></br>
             <input type="submit" value="welk gerecht het langst duurt om te maken" name="Toon">
+            <input type="submit" value="welk gerecht het makkelijkst is om te maken" name="Toon3">
             <input type="submit" value="welk gerecht de meeste ingrediënten heeft" name="Toon2">
         </form>
 <?php
@@ -126,15 +127,38 @@ if ($result->rowCount() > 0) {
         echo "</tr>";
     }
     echo "</table>";
-} else {
-    echo "No records found";
+
 }
 }
 ?>
 
 <?php
-$sql = "SELECT * FROM Recepten ORDER BY aantal_ingredienten DESC LIMIT 1";
+$sql = "SELECT * FROM Recepten ORDER BY moeilijkheidsgraad DESC LIMIT 1";
 $result = $conn->query($sql);
+
+if (isset($_POST['Toon3'])) {
+    if ($result->rowCount() > 0) {  
+        echo "<table>";
+        echo "<tr><th>id</th><th>titel</th><th>afbeelding</th></th><th>duur</th><th>menugang</th><th>Moeilijkheidsgraad</th><th>aantal ingredienten</th>"; 
+        foreach($result as $row) {
+            echo "<tr>";
+            echo "<td>".$row['id']."</td>";
+            echo "<td>".$row['titel']."</td>";
+            echo "<td>".$row['afbeelding']."</td>";
+            echo "<td>".$row['duur']."</td>";
+            echo "<td>".$row['menugang']."</td>";
+            echo "<td>".$row['moeilijkheidsgraad']."</td>";
+            echo "<td>".$row['aantal_ingredienten']."</td>";
+            echo "</tr>";
+        }
+        echo "</table>";
+    }
+    }
+    ?>
+    
+    <?php
+    $sql = "SELECT * FROM Recepten ORDER BY aantal_ingredienten DESC LIMIT 1";
+    $result = $conn->query($sql);
 
 if (isset($_POST['Toon2'])) {
 if ($result->rowCount() > 0) {  
@@ -152,8 +176,7 @@ if ($result->rowCount() > 0) {
         echo "</tr>";
     }
     echo "</table>";
-} else {
-    echo "No records found";
+
 }
 }
 ?>

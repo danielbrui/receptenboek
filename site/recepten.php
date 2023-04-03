@@ -28,7 +28,7 @@ $recepten = $stmt->fetchAll();
             <div>
                 <?php echo $recept['titel'] ?></br>
                 <img src="images/<?php echo $recept['afbeelding'] ?>" style="width: 100%"></img></a></br>
-                <a href="recept.php?id=<?php echo $recept['id'] ?>"><input type="submit" value="knop"></a>
+                <a href="recept.php?id=<?php echo $recept['id'] ?>"><input type="submit" value="Bekijk recept"></a>
             </div>
         <?php endforeach ?>
     </div>
