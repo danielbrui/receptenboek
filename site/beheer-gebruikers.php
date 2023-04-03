@@ -7,6 +7,7 @@ if ($_SESSION['rol'] != "admin") {
 require 'database.php';
 include 'header.php';
 include 'nav.php';
+error_reporting(0);
 
 $id = $_GET['id'];
 $stmt->bindParam(':id', $id);

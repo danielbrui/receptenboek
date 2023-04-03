@@ -4,9 +4,9 @@ if ($_SESSION['rol'] != "admin") {
     //header('index.php');
     exit;
 }
-if ($_SESSION['email'] != $email) {
-    exit;
-}
+//if ($_SESSION['email'] != $email) {
+//exit;
+//}
 require 'database.php';
 include 'header.php';
 include 'nav.php';
@@ -19,6 +19,17 @@ $stmt->execute();
 $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
 $ingredienten = $stmt->fetchAll();
 
+
+
+if (isset($_POST['UpdateButton'])) {
+    $id = $_POST['AlleRecepten'];
+    $naam = $_POST['naam'];
+
+    $stmt = $conn->prepare("UPDATE Ingredient SET naam=:naam WHERE id=:id");
+    $stmt->bindParam(':id', $id);
+    $stmt->bindParam(':naam', $naam);
+    $stmt->execute();
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -47,7 +58,21 @@ $ingredienten = $stmt->fetchAll();
                     </tr>
                 <?php endforeach ?>
             </tbody>
-        </table>
+        </table></br>
+
+        <form id="formReceptOpslaan" method="post">
+
+            <label for="naam">Naam</label></br>
+            <input type="text" name="naam" id="naam"></br></br>
+            <input type="submit" name="UpdateButton" value="Bewerk ingredient">
+            <select name="AlleRecepten" id="AlleRecepten">
+                <?php foreach ($ingredienten as $ingredient) : ?>
+                    <option value="<?= $ingredient['id'] ?>"><?= $ingredient['naam'] ?></option>
+                <?php endforeach ?>
+            </select>
+
+
+        </form>
     </div>
 </body>
 

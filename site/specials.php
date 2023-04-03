@@ -38,7 +38,7 @@ if (isset($_POST['titel'])) {
 
 if (isset($_POST['Toon'])) {
     $id = $_POST['AlleRecepten'];
-    $stmt = $conn->prepare("SELECT  FROM Recepten ORDER BY duur ASC WHERE id = :id");
+    $stmt = $conn->prepare("SELECT  FROM Recepten ORDER BY id ASC WHERE id = :id");
     $stmt->bindParam(':id', $id);
     $stmt->execute();
 }
@@ -71,6 +71,7 @@ if (isset($_POST['UpdateButton'])) {
 </head>
 
 <body>
+
     <div class="divclass1">
         <h1>Lijst Recepten</h1>
         <table class="tabel">
