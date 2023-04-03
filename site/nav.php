@@ -8,5 +8,4 @@
         <div><a href="beheer-gebruikers.php">beheer gebruikers</a></div>
         <div><a href="beheer-recepten.php">beheer recepten</a></div>
         <div><a href="specials.php">specials</a></div>
-        <div><a href="index.php">index</a></div>
     </div>

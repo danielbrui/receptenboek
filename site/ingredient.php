@@ -1,13 +1,24 @@
 <?php
+session_start();
+if ($_SESSION['rol'] != "admin") {
+    //header('index.php');
+    exit;
+}
+if ($_SESSION['email'] != $email) {
+    exit;
+}
 require 'database.php';
 include 'header.php';
 include 'nav.php';
+$id = $_GET['id'];
 
-$stmt = $conn->prepare("SELECT * FROM Ingredient");
+$sql = "SELECT * FROM Ingredient WHERE id = :id";
+$stmt = $conn->prepare($sql);
+$stmt->bindParam(':id', $id);
 $stmt->execute();
-
+$result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
 $ingredienten = $stmt->fetchAll();
-/*?id=1*/
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -30,9 +41,11 @@ $ingredienten = $stmt->fetchAll();
                 </tr>
             </thead>
             <tbody>
+                <?php foreach ($ingredienten as $ingredient) : ?>
                     <tr>
                         <td><?php echo $ingredient["naam"] ?></td>
                     </tr>
+                <?php endforeach ?>
             </tbody>
         </table>
     </div>

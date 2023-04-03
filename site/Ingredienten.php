@@ -8,6 +8,7 @@ $stmt->execute();
 
 $ingredienten = $stmt->fetchAll();
 
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -34,6 +35,7 @@ $ingredienten = $stmt->fetchAll();
                 <?php foreach ($ingredienten as $ingredient) : ?>
                     <tr>
                         <td><?php echo $ingredient["naam"] ?></td>
+                        <td><a href="ingredient.php?id=<?php echo $ingredient['id'] ?>"><input type="submit" value="Bewerk"></a></td>
                     </tr>
                 <?php endforeach ?>
             </tbody>

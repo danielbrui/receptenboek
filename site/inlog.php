@@ -30,8 +30,10 @@ if (isset($_POST['email']) && !empty($_POST['email'])) {
                 echo "Je bent ingelogd als ";
                 //code om de pagina te laden
                 $_SESSION = $user;
+                $_SESSION['email'] = $email;
                 if ($user['rol'] == 'admin') {
                     echo "administrator.";
+                    $_SESSION["rol"] = "admin";
                 } else {
                     echo "klant.";
                 }
@@ -41,11 +43,6 @@ if (isset($_POST['email']) && !empty($_POST['email'])) {
             }
         }
     }
-    /*     if($_SESSION = $user) {
-        if ($user['rol'] == 'admin') {
-            echo "administrator.";
-
-    } */
 }
 
 ?>

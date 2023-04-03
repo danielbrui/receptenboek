@@ -15,7 +15,7 @@ $stmt = $conn->prepare("SELECT * FROM Recepten");
 $stmt->execute();
 $recepten = $stmt->fetchAll();
 
-if (isset($_POST['titel'])) {
+/*if (isset($_POST['titel'])) {
     $titel = $_POST['titel'];
     $afbeelding = $_POST['afbeelding'];
     $duur = $_POST['duur'];
@@ -34,19 +34,20 @@ if (isset($_POST['titel'])) {
 
 
     $stmt->execute();
-}
+}*/
 
-if (isset($_POST['Toon'])) {
+if (isset($_POST['del'])) {
     $id = $_POST['AlleRecepten'];
-    $stmt = $conn->prepare("SELECT  FROM Recepten ORDER BY duur ASC WHERE id = :id");
+    $stmt = $conn->prepare("DELETE FROM Recepten WHERE id = :id");
     $stmt->bindParam(':id', $id);
     $stmt->execute();
+    echo "test.";
 }
 
-if (isset($_POST['UpdateButton'])) {
+ if (isset($_POST['UpdateButton'])) {
     $id = $_POST['AlleRecepten'];
-    var_dump($id);
-    var_dump($titel);
+    //var_dump($id);
+    //var_dump($_POST);
     $stmt = $conn->prepare("UPDATE Recepten SET titel=:titel, afbeelding=:afbeelding, duur=:duur, menugang=:menugang, moeilijkheidsgraad=:moeilijkheidsgraad, aantal_ingredienten=:aantal_ingredienten WHERE id=:id");
     $stmt->bindParam(':id', $id);
     $stmt->bindParam(':titel', $titel);
@@ -56,7 +57,9 @@ if (isset($_POST['UpdateButton'])) {
     $stmt->bindParam(':moeilijkheidsgraad', $moeilijkheidsgraad);
     $stmt->bindParam(':aantal_ingredienten', $aantal_ingredienten);
     $stmt->execute();
-}
+    echo "test2";
+    echo $id;
+} 
 
 ?>
 <!DOCTYPE html>
@@ -95,11 +98,42 @@ if (isset($_POST['UpdateButton'])) {
                         <td><?php echo $recept["menugang"] ?></td>
                         <td><?php echo $recept["moeilijkheidsgraad"] ?></td>
                         <td><?php echo $recept["aantal_ingredienten"] ?></td>
+                        <?php /*<td><input type="submit" value="Bewerk recept <?php echo $recept['id'] ?>" name="<?php echo $recept['id'] ?>"></td> */ ?>
                     </tr>
                 <?php endforeach ?>
             </tbody>
-        </table></br>
-        <input type="submit" value="Toon">
+        </table>
+        </br>
+
+        <h1>Recepten Opslaan</h1>
+        <form id="recepedelete" method="post">
+            
+        </form>
+
+        <form id="formReceptOpslaan" method="post">
+            <label for="titel">Selecteer een recept.</label></br>
+            <select name="AlleRecepten" id="AlleRecepten">
+                <?php foreach ($recepten as $recept) : ?>
+                    <option value="<?= $recept['id'] ?>"><?= $recept['titel'] ?></option>
+                <?php endforeach ?>
+            </select>
+            <input type="submit" value="Verwijder" name="del"></br></br>
+            <h3 class="h3">Recepten toevoegen</h3></br>
+            <label for="titel">Titel</label></br>
+            <input type="text" name="titel" id="titel"></br>
+            <label for="titel">Afbeelding</label></br>
+            <input type="text" name="afbeelding" id="afbeelding"></br>
+            <label for="titel">Duur</label></br>
+            <input type="text" name="duur" id="duur"></br>
+            <label for="titel">Menugang</label></br>
+            <input type="text" name="menugang" id="menugang"></br>
+            <label for="titel">Moeilijkheidsgraad</label></br>
+            <input type="text" name="moeilijkheidsgraad" id="moeilijkheidsgraad"></br>
+            <label for="titel">Aantal Ingredienten</label></br>
+            <input type="text" name="aantal_ingredienten" id="aantal_ingredienten"></br></br>
+            <input type="submit" value="Opslaan">
+            <input type="submit" value="UpdateButton" name ="UpdateButton">
+        </form>
     </div>
 </body>
 
